@@ -1,11 +1,11 @@
 <mat-toolbar>
-  <div class="heading">{{name}}</div>
+  <div class="heading">{{ name }}</div>
   <div class="filler"></div>
   <div *ngFor="let link of links">
-    <button mat-button>{{link}}</button>
+    <button mat-button>{{ link }}</button>
   </div>
 </mat-toolbar>
-<div class="screen">
+<div class="screen" appWheel (wheelDelta)="wheelDelta($event)">
   <div class="bio">
     <div class="bio-line heading">Hey there!<br />I am Chirag Sane,</div>
     <div class="filler"></div>
@@ -14,7 +14,9 @@
     <div class="bio-line">DevOps Professional</div>
     <div class="bio-line">& a Full-stack Developer</div>
     <div class="filler"></div>
-    <div class="bio-line">This is my personal website.<br />I hope you like it...</div>
+    <div class="bio-line">
+      This is my personal website.<br />I hope you like it...
+    </div>
   </div>
   <div class="pic-wrapper">
     <div class="pic"></div>
@@ -22,7 +24,7 @@
   <div class="highlight-wrapper"><div class="highlight"></div></div>
   <div class="mention-wrapper">
     <span #mentionIcon class="mention-icon"></span>
-    Made with {{visibleMention.join('')}}
+    Made with {{ visibleMention.join("") }}
   </div>
   <div class="navigation-wrapper">
     <button mat-mini-fab>

@@ -58,4 +58,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       `url("assets/icons/${this.visibleMention.join('').toLowerCase()}.svg")`
     );
   }
+  wheelDelta(x: boolean) {
+    console.log(x)
+  }
 }

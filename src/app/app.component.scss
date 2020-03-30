@@ -150,11 +150,11 @@ mat-toolbar {
   }
   @keyframes blink {
     from,
-  to {
-    border-right: 1px solid transparent;
-  }
-  50% {
-    border-right: 1px solid #111111;
+    to {
+      border-right: 1px solid transparent;
+    }
+    50% {
+      border-right: 1px solid #111111;
     }
   }
 }
