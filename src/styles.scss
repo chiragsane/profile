@@ -6,10 +6,18 @@ body {
 }
 body {
   margin: 0;
+  background: linear-gradient(to right, #0A0A0A, #151515);
   * {
+    box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     .heading {
       font-family: 'Righteous', cursive;
     }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  body {
+    font-size: 14px;
   }
 }
