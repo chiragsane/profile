@@ -5,7 +5,7 @@
     <button mat-button>{{ link }}</button>
   </div>
 </mat-toolbar>
-<div class="screen" appWheel (wheelDelta)="wheelDelta($event)">
+<div #screen class="screen" [class.alternate-view]="alternateView" appWheel (wheelDelta)="wheelDelta($event)">
   <div class="bio">
     <div class="bio-line heading">Hey there!<br />I am Chirag Sane,</div>
     <div class="filler"></div>
@@ -28,7 +28,7 @@
   </div>
   <div class="navigation-wrapper">
     <button mat-mini-fab>
-      <mat-icon>chevron_right</mat-icon>
+      <mat-icon>{{alternateView ? 'chevron_left' : 'chevron_right'}}</mat-icon>
     </button>
   </div>
 </div>

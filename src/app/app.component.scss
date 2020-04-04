@@ -16,6 +16,7 @@ mat-toolbar {
     width: 240px;
     display: flex;
     flex-direction: column;
+    transition: all 0.4s 0.8s ease-in-out;
     .heading {
       font-size: x-large;
     }
@@ -28,6 +29,7 @@ mat-toolbar {
     width: 240px;
     position: relative;
     margin-left: 80px;
+    transition: all 0.8s ease-in-out;
     .pic {
       position: relative;
       height: 100%;
@@ -85,6 +87,7 @@ mat-toolbar {
       height: 100%;
       width: 400%;
       margin-left: calc(50% + 160px);
+      transition: all 1.2s ease-in-out;
     }
   }
 }
@@ -96,6 +99,7 @@ mat-toolbar {
   left: calc(50% - 80px);
   padding-right: 4px;
   animation: 0.8s blink step-end infinite;
+  transition: all 0.8s ease-in-out;
   .mention-icon {
     height: 20px;
     width: 20px;
@@ -110,8 +114,9 @@ mat-toolbar {
   position: absolute;
   bottom: 20px;
   right: 20px;
+  transition: all 2s ease-in-out;
   button[mat-mini-fab] {
-    background: transparent;
+    background: #fbc403;
   }
 }
 .filler {
@@ -125,6 +130,15 @@ mat-toolbar {
   }
   50% {
     border-right: 1px solid #ffdd03;
+  }
+}
+@keyframes blink-alternate {
+  from,
+  to {
+    border-right: 1px solid transparent;
+  }
+  50% {
+    border-right: 1px solid #111111;
   }
 }
 
@@ -146,15 +160,7 @@ mat-toolbar {
     }
     .mention-wrapper {
       left: calc(50% - 120px);
-    }
-  }
-  @keyframes blink {
-    from,
-    to {
-      border-right: 1px solid transparent;
-    }
-    50% {
-      border-right: 1px solid #111111;
+      animation: 0.8s blink-alternate step-end infinite;
     }
   }
 }
@@ -176,3 +182,25 @@ mat-toolbar {
 //     background-color: yellow;
 //   }
 // }
+
+.alternate-view {
+  .highlight-wrapper {
+    .highlight {
+      margin-left: calc(50% - 400px);
+    }
+  }
+  .bio {
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+  }
+  .pic-wrapper {
+    transform: translateX(-560px);
+  }
+  .mention-wrapper {
+    color: #111111;
+    animation: 0.8s blink-alternate step-end infinite;
+  }
+  .navigation-wrapper {
+    right: calc(100% - 60px);
+  }
+}

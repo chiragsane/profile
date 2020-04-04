@@ -17,6 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   visibleMention: string[];
   visibleMentionIndex = 0;
   @ViewChild('mentionIcon') mentionIcon: ElementRef;
+  alternateView = false;
   constructor(private renderer: Renderer2) { }
   ngOnInit(): void {
     this.visibleMention = this.mentions[this.visibleMentionIndex].split('');
@@ -58,7 +59,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       `url("assets/icons/${this.visibleMention.join('').toLowerCase()}.svg")`
     );
   }
-  wheelDelta(x: boolean) {
-    console.log(x)
+  wheelDelta(x: string) {
+    x === 'next'
+    ? this.alternateView = true
+    : this.alternateView = false;
   }
 }
