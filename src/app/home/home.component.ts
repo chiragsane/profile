@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
   toggleMenu(isMenuView: boolean) {
     this.isMenuView = isMenuView;
   }
+  previousView() {
+    this.isMainView = true;
+    this.isFullView = false;
+  }
   nextView() {
     this.isMainView = false;
     this.isFullView = true;

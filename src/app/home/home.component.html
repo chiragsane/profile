@@ -26,7 +26,10 @@
       </div>
     </div>
     <div class="button-wrapper">
-      <app-mention></app-mention>
+      <app-mention *ngIf="isMainView"></app-mention>
+      <button *ngIf="isFullView" mat-mini-fab color="primary" (click)="previousView()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
       <button mat-mini-fab color="primary" (click)="nextView()">
         <mat-icon>chevron_right</mat-icon>
       </button>

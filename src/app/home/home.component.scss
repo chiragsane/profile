@@ -100,7 +100,9 @@ $menu-area: calc(100% - 80px);
     height: calc(100% - #{$header-area});
     .button-wrapper {
       transition: all 0.4s ease-in-out;
-      opacity: 0;
+      button:not(:last-child) {
+        opacity: 0.5;
+      }
     }
   }
 }
