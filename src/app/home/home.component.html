@@ -1,3 +1,4 @@
+<app-toolbar></app-toolbar>
 <div class="home-wrapper col">
   <div class="dark-wrapper"></div>
   <div class="gold-wrapper col">
@@ -22,7 +23,11 @@
       </div>
     </div>
     <div class="mention-wrapper">
-      <div #mentionIcon class="mention-icon"></div>
+      <mat-icon [svgIcon]="mentions[visibleMentionIndex].toLowerCase()"
+        aria-hidden="false"
+        aria-label="mentions[visibleMentionIndex]"
+        [style.opacity]="isIconVisible ? 1 : 0"
+      ></mat-icon>
       Made with {{ visibleMention.join("") }}
     </div>
     <div class="button-wrapper">

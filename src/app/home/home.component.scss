@@ -61,12 +61,9 @@ $dark-area: calc(56px + 44px + (#{$photo-wrapper-size} / 2));
       align-items: center;
       font-style: italic;
       animation: 0.8s blink step-end infinite;
-      .mention-icon {
-        height: 20px;
-        width: 20px;
+      mat-icon {
         margin-right: 4px;
-        background-size: cover;
-        transition: opacity 0.4s ease-in-out;
+        transition: opacity 0.2s ease-in-out;
       }
     }
     .button-wrapper {

@@ -1,4 +1,6 @@
-import { Component, ViewChild, ElementRef, Renderer2, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-home',
@@ -14,31 +16,37 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ];
   visibleMention: string[];
   visibleMentionIndex = 0;
-  @ViewChild('mentionIcon') mentionIcon: ElementRef;
-  alternateView = false;
-  constructor(private renderer: Renderer2) { }
+  isIconVisible = true;
+  constructor(
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer
+  ) {
+    this.mentions.forEach(mention => {
+      mention = mention.toLowerCase();
+      iconRegistry.addSvgIcon(mention, sanitizer.bypassSecurityTrustResourceUrl(`assets/icons/${mention}.svg`));
+    });
+  }
   ngOnInit(): void {
     this.visibleMention = this.mentions[this.visibleMentionIndex].split('');
     setInterval(() => {
-      this.renderer.setStyle(this.mentionIcon.nativeElement, 'opacity', 0);
+      this.isIconVisible = false;
       this.applyDeleteEffect();
-    }, 4000);
+    }, 6000);
   }
   ngAfterViewInit(): void {
-    this.showMentionIcon();
+    this.isIconVisible = true;
   }
   applyDeleteEffect() {
     this.visibleMention.pop();
-    this.visibleMention.length > 0
-      ? setTimeout(() => this.applyDeleteEffect(), 80)
-      : this.changeVisibleMention();
-  }
-  changeVisibleMention() {
-    this.visibleMention = [];
-    this.visibleMentionIndex < this.mentions.length - 1
-      ? this.visibleMentionIndex++
-      : this.visibleMentionIndex = 0;
-    this.applyTypeEffect(this.mentions[this.visibleMentionIndex].split(''));
+    if (this.visibleMention.length > 0) {
+      setTimeout(() => this.applyDeleteEffect(), 80);
+    } else {
+      this.visibleMention = [];
+      this.visibleMentionIndex < this.mentions.length - 1
+        ? this.visibleMentionIndex++
+        : this.visibleMentionIndex = 0;
+      this.applyTypeEffect(this.mentions[this.visibleMentionIndex].split(''));
+    }
   }
   applyTypeEffect(newMention: string[]) {
     const char = newMention.shift();
@@ -46,16 +54,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.visibleMention.push(char);
       setTimeout(() => this.applyTypeEffect(newMention), 80);
     } else {
-      this.showMentionIcon();
+      this.isIconVisible = true;
     }
-  }
-  showMentionIcon() {
-    this.renderer.removeStyle(this.mentionIcon.nativeElement, 'background-image');
-    this.renderer.setStyle(this.mentionIcon.nativeElement, 'opacity', 1);
-    this.renderer.setStyle(
-      this.mentionIcon.nativeElement,
-      'background-image',
-      `url("assets/icons/${this.visibleMention.join('').toLowerCase()}.svg")`
-    );
   }
 }
