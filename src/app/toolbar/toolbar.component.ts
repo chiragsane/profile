@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 
@@ -7,13 +7,17 @@ import { MatIconRegistry } from '@angular/material/icon';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
   name = 'ChiragSane';
+  isMenuActive = false;
+  @Output() toggle = new EventEmitter();
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
       'menu', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/menu.svg')
     );
   }
-  ngOnInit(): void {
+  toggleMenu() {
+    this.isMenuActive = !this.isMenuActive;
+    this.toggle.emit(this.isMenuActive);
   }
 }

@@ -1,9 +1,6 @@
 @import '../home.component';
 
 .mention-wrapper {
-  position: absolute;
-  bottom: 32px;
-  left: calc(50% - (#{$bio-wrapper-size} / 2));
   height: 16px;
   padding-right: 4px;
   border-right: 1px solid;

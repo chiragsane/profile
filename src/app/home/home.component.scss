@@ -4,31 +4,33 @@
 $bio-wrapper-size: 280px;
 $photo-wrapper-size: 200px;
 $dark-area: calc(56px + 44px + (#{$photo-wrapper-size} / 2));
+$header-area: 56px;
+$menu-area: calc(100% - 80px);
 
 .home-wrapper {
   @include flex-center;
   height: calc(200% - #{$dark-area});
-  animation: 1.2s 0.4s appear-home-wrapper ease-in-out forwards;
+  transition: all 1.6s ease-in-out;
   .dark-wrapper {
     @include flex-center;
     @include background-linear("dark");
     height: calc((100% + #{$dark-area}) / 2);
     flex-shrink: 0;
-    animation: 1.2s 0.4s appear-dark-wrapper ease-in-out forwards;
+    transition: all 1.6s ease-in-out;
   }
   .gold-wrapper {
     @include flex-center;
     @include background-linear("gold");
     justify-content: flex-start;
     height: calc(2 * (100% - #{$dark-area}));
-    animation: 1.2s 0.4s appear-gold-wrapper ease-in-out forwards;
+    transition: all 1.6s ease-in-out;
     position: relative;
     .photo-wrapper {
       @include set-size($photo-wrapper-size);
       position: absolute;
       opacity: 0;
       top: calc(#{$photo-wrapper-size} / 2);
-      animation: 1.2s 0.4s appear-photo-wrapper ease-in-out forwards;
+      transition: all 1.6s ease-in-out;
       .photo {
         height: 100%;
         background-image: url("src/assets/profile.jpg");
@@ -41,7 +43,7 @@ $dark-area: calc(56px + 44px + (#{$photo-wrapper-size} / 2));
       width: $bio-wrapper-size;
       margin-top: calc((#{$photo-wrapper-size} / 2) + 20px);
       opacity: 0;
-      animation: 0.4s 1.6s appear-bio-wrapper ease-in-out forwards;
+      transition: all 1.6s ease-in-out;
       .heading {
         font-size: large;
       }
@@ -55,36 +57,10 @@ $dark-area: calc(56px + 44px + (#{$photo-wrapper-size} / 2));
       bottom: 20px;
       width: calc(100% - 40px);
       display: flex;
-      flex-direction: row-reverse;
       justify-content: space-between;
+      align-items: center;
+      transition: all 0.4s 1.2s ease-in-out;
     }
-  }
-}
-
-@keyframes appear-home-wrapper {
-  to {
-    height: 100%;
-  }
-}
-@keyframes appear-dark-wrapper {
-  to {
-    height: $dark-area;
-  }
-}
-@keyframes appear-gold-wrapper {
-  to {
-    height: calc(100% - #{$dark-area});
-  }
-}
-@keyframes appear-photo-wrapper {
-  to {
-    opacity: 1;
-    top: calc(-#{$photo-wrapper-size} / 2);
-  }
-}
-@keyframes appear-bio-wrapper {
-  to {
-    opacity: 1;
   }
 }
 
@@ -94,6 +70,51 @@ $dark-area: calc(56px + 44px + (#{$photo-wrapper-size} / 2));
     border-right: 1px solid transparent;
   }
   50% {
-    border-right: 1px solid #111111;
+    border-right: 1px solid $dark;
+  }
+}
+
+.home-wrapper.main-view {
+  height: 100%;
+  .dark-wrapper {
+    height: $dark-area;
+  }
+  .gold-wrapper {
+    height: calc(100% - #{$dark-area});
+    .photo-wrapper {
+      top: calc(-#{$photo-wrapper-size} / 2);
+      opacity: 1;
+    }
+    .bio-wrapper {
+      opacity: 1;
+    }
+  }
+}
+
+.home-wrapper.full-view {
+  height: 100%;
+  .dark-wrapper {
+    height: $header-area;
+  }
+  .gold-wrapper {
+    height: calc(100% - #{$header-area});
+    .button-wrapper {
+      transition: all 0.4s ease-in-out;
+      opacity: 0;
+    }
+  }
+}
+
+.home-wrapper.menu-view {
+  height: 100%;
+  .dark-wrapper {
+    height: $menu-area;
+  }
+  .gold-wrapper {
+    height: calc(100% - #{$menu-area});
+    .button-wrapper {
+      transition: all 0.4s ease-in-out;
+      opacity: 0;
+    }
   }
 }

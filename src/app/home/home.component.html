@@ -1,12 +1,15 @@
-<app-toolbar></app-toolbar>
-<div class="home-wrapper col">
+<app-toolbar (toggle)="toggleMenu($event)"></app-toolbar>
+<div class="home-wrapper col"
+  [class.main-view]="isMainView && !isMenuView && !isFullView "
+  [class.full-view]="isFullView"
+  [class.menu-view]="isMenuView">
   <div class="dark-wrapper"></div>
   <div class="gold-wrapper col">
     <div class="photo-wrapper">
       <div class="photo"></div>
     </div>
     <div class="bio-wrapper">
-      <div class="heading">Hello , my name is Chirag...</div>
+      <div class="heading">Hello, my name is Chirag...</div>
       <div class="bio">
         I am a<br />
         - Cloud Engineer<br />
@@ -19,12 +22,12 @@
         Built in quarantine, from scratch.<br />
       </div>
       <div class="bio">
-        I would love to hear a feedback. Thanks..
+        I would love to hear some feedback. Thanks..
       </div>
     </div>
-    <app-mention></app-mention>
     <div class="button-wrapper">
-      <button mat-mini-fab color="primary">
+      <app-mention></app-mention>
+      <button mat-mini-fab color="primary" (click)="nextView()">
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
