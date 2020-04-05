@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoaderComponent } from './loader/loader.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MentionComponent } from './home/mention/mention.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     // WheelDirective,
     LoaderComponent,
     HomeComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    MentionComponent
   ],
   imports: [
     BrowserModule,

@@ -22,14 +22,7 @@
         I would love to hear a feedback. Thanks..
       </div>
     </div>
-    <div class="mention-wrapper">
-      <mat-icon [svgIcon]="mentions[visibleMentionIndex].toLowerCase()"
-        aria-hidden="false"
-        aria-label="mentions[visibleMentionIndex]"
-        [style.opacity]="isIconVisible ? 1 : 0"
-      ></mat-icon>
-      Made with {{ visibleMention.join("") }}
-    </div>
+    <app-mention></app-mention>
     <div class="button-wrapper">
       <button mat-mini-fab color="primary">
         <mat-icon>chevron_right</mat-icon>
