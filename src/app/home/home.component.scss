@@ -10,27 +10,27 @@ $menu-area: calc(100% - 80px);
 .home-wrapper {
   @include flex-center;
   height: calc(200% - #{$dark-area});
-  transition: all 1.6s ease-in-out;
+  transition: all 0.8s ease-in-out;
   .dark-wrapper {
     @include flex-center;
     @include background-linear("dark");
     height: calc((100% + #{$dark-area}) / 2);
     flex-shrink: 0;
-    transition: all 1.6s ease-in-out;
+    transition: all 0.8s ease-in-out;
   }
   .gold-wrapper {
     @include flex-center;
     @include background-linear("gold");
     justify-content: flex-start;
     height: calc(2 * (100% - #{$dark-area}));
-    transition: all 1.6s ease-in-out;
+    transition: all 0.8s ease-in-out;
     position: relative;
     .photo-wrapper {
       @include set-size($photo-wrapper-size);
       position: absolute;
       opacity: 0;
       top: calc(#{$photo-wrapper-size} / 2);
-      transition: all 1.6s ease-in-out;
+      transition: all 0.8s ease-in-out;
       .photo {
         height: 100%;
         background-image: url("src/assets/profile.jpg");
@@ -43,7 +43,7 @@ $menu-area: calc(100% - 80px);
       width: $bio-wrapper-size;
       margin-top: calc((#{$photo-wrapper-size} / 2) + 20px);
       opacity: 0;
-      transition: all 1.6s ease-in-out;
+      transition: all 0.8s ease-in-out;
       .heading {
         font-size: large;
       }
@@ -59,7 +59,7 @@ $menu-area: calc(100% - 80px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.4s 1.2s ease-in-out;
+      transition: all 0.4s 0.4s ease-in-out;
     }
   }
 }
