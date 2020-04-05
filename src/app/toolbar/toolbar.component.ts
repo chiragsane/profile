@@ -10,11 +10,15 @@ import { MatIconRegistry } from '@angular/material/icon';
 export class ToolbarComponent {
   name = 'ChiragSane';
   isMenuActive = false;
+  links = [
+    'Home',
+    'About Me',
+    'Work Experience'
+  ]
   @Output() toggle = new EventEmitter();
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon(
-      'menu', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/menu.svg')
-    );
+    iconRegistry.addSvgIcon('menu', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/menu.svg'));
+    iconRegistry.addSvgIcon('cancel', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/cancel.svg'));
   }
   toggleMenu() {
     this.isMenuActive = !this.isMenuActive;

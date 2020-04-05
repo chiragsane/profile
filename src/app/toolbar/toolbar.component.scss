@@ -1,8 +1,7 @@
-@import 'src/theme';
+@import "src/theme";
 
 .mat-toolbar {
   position: absolute;
-  top: -56px;
   background-color: transparent;
   opacity: 0;
   animation: 0.4s 1.2s appear ease-out forwards;
@@ -17,8 +16,25 @@
     height: 40px;
     width: 40px;
   }
+  .menu-wrapper {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.8s 0.8s ease-in-out;
+    button {
+      margin: 10px 40px;
+      border-color: $gold;
+    }
+    &.menu-view {
+      opacity: 1;
+    }
+  }
 }
-
 
 @keyframes appear {
   to {

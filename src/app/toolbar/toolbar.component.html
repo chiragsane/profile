@@ -2,6 +2,14 @@
   <span class="heading">{{name}}</span>
   <span class="spacer"></span>
   <button mat-icon-button (click)="toggleMenu()">
-    <mat-icon svgIcon="menu" aria-hidden="false" aria-label="menu"></mat-icon>
+    <mat-icon [svgIcon]="isMenuActive ? 'cancel' : 'menu'"
+      aria-hidden="false"
+      aria-label="menu"
+    ></mat-icon>
   </button>
+  <div class="menu-wrapper" [class.menu-view]="isMenuActive">
+    <button mat-stroked-button *ngFor="let link of links" color="primary">
+      {{link}}
+    </button>
+  </div>
 </mat-toolbar>
