@@ -1,0 +1,118 @@
+@import "src/mixins";
+@import "src/theme";
+
+$bio-wrapper-size: 280px;
+$photo-wrapper-size: 200px;
+$dark-area: calc(56px + 44px + (#{$photo-wrapper-size} / 2));
+
+.home-wrapper {
+  @include flex-center;
+  height: calc(200% - #{$dark-area});
+  animation: 1.2s 0.4s appear-home-wrapper ease-in-out forwards;
+  .dark-wrapper {
+    @include flex-center;
+    @include background-linear("dark");
+    height: calc((100% + #{$dark-area}) / 2);
+    flex-shrink: 0;
+    animation: 1.2s 0.4s appear-dark-wrapper ease-in-out forwards;
+  }
+  .gold-wrapper {
+    @include flex-center;
+    @include background-linear("gold");
+    justify-content: flex-start;
+    height: calc(2 * (100% - #{$dark-area}));
+    animation: 1.2s 0.4s appear-gold-wrapper ease-in-out forwards;
+    position: relative;
+    .photo-wrapper {
+      @include set-size($photo-wrapper-size);
+      position: absolute;
+      opacity: 0;
+      top: calc(#{$photo-wrapper-size} / 2);
+      animation: 1.2s 0.4s appear-photo-wrapper ease-in-out forwards;
+      .photo {
+        height: 100%;
+        background-image: url("src/assets/profile.jpg");
+        background-size: cover;
+        @include corner-border($gold, top, left);
+      }
+      @include corner-border($dark, bottom, right);
+    }
+    .bio-wrapper {
+      width: $bio-wrapper-size;
+      margin-top: calc((#{$photo-wrapper-size} / 2) + 20px);
+      opacity: 0;
+      animation: 0.4s 1.6s appear-bio-wrapper ease-in-out forwards;
+      .heading {
+        font-size: large;
+      }
+      .bio {
+        margin-top: 16px;
+        line-height: 160%;
+      }
+    }
+    .mention-wrapper {
+      position: absolute;
+      bottom: 32px;
+      left: calc(50% - (#{$bio-wrapper-size} / 2));
+      height: 16px;
+      padding-right: 4px;
+      border-right: 1px solid;
+      display: flex;
+      align-items: center;
+      font-style: italic;
+      animation: 0.8s blink step-end infinite;
+      .mention-icon {
+        height: 20px;
+        width: 20px;
+        margin-right: 4px;
+        background-size: cover;
+        transition: opacity 0.4s ease-in-out;
+      }
+    }
+    .button-wrapper {
+      position: absolute;
+      bottom: 20px;
+      width: calc(100% - 40px);
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+  }
+}
+
+@keyframes appear-home-wrapper {
+  to {
+    height: 100%;
+  }
+}
+@keyframes appear-dark-wrapper {
+  to {
+    height: $dark-area;
+  }
+}
+@keyframes appear-gold-wrapper {
+  to {
+    height: calc(100% - #{$dark-area});
+  }
+}
+@keyframes appear-photo-wrapper {
+  to {
+    opacity: 1;
+    top: calc(-#{$photo-wrapper-size} / 2);
+  }
+}
+@keyframes appear-bio-wrapper {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-right: 1px solid transparent;
+  }
+  50% {
+    border-right: 1px solid #111111;
+  }
+}

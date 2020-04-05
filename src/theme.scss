@@ -7,11 +7,25 @@ $app-secondary:  mat-palette($mat-grey);
 $app-warn:    mat-palette($mat-red);
 
 // colors
-$gold: mat-color($app-primary, A700);
-$gold-alt: mat-color($app-primary, A400);
+$gold: mat-color($app-primary, A400);
+$gold-alt: mat-color($app-primary, A700);
 
 $dark: mat-color($app-secondary, 900);
 $dark-alt: mat-color($app-secondary, 700);
+
+@function get-color($color) {
+  @if $color == gold {
+    @return $gold;
+  } @else if $color == gold-alt {
+    @return $gold-alt;
+  } @else if $color == dark {
+    @return $dark;
+  } @else if $color == dark-alt {
+    @return $dark-alt;
+  } @else {
+    @error "Unknown color #{$color}.";
+  }
+}
 
 // theme
 $app-theme: mat-light-theme($app-primary, $app-secondary, $app-warn);

@@ -1,0 +1,28 @@
+@import 'src/theme';
+
+.mat-toolbar {
+  position: absolute;
+  top: -56px;
+  background-color: transparent;
+  opacity: 0;
+  animation: 0.4s 1.2s appear ease-out forwards;
+  .heading {
+    font-size: xx-large;
+    color: $gold;
+  }
+  .spacer {
+    flex-grow: 1;
+  }
+  button[mat-icon-button] .mat-icon {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+
+@keyframes appear {
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,24 @@
+@import 'src/mixins';
+@import 'src/theme';
+
+.loader-wrapper {
+  @include flex-center;
+  @include background-linear(dark);
+  .loader {
+    width: 120px;
+    height: 120px;
+    background-image: url('src/assets/backgrounds/spin.svg');
+    animation: 0.4s 2s disappear ease-out forwards;
+  }
+  .content {
+    color: $gold;
+    font-style: italic;
+    animation: 0.4s 2s disappear ease-out forwards;
+  }
+}
+
+@keyframes disappear {
+  to {
+    opacity: 0;
+  }
+}

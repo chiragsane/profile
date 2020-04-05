@@ -1,34 +1,3 @@
-<mat-toolbar>
-  <div class="heading">{{ name }}</div>
-  <div class="filler"></div>
-  <div *ngFor="let link of links">
-    <button mat-button>{{ link }}</button>
-  </div>
-</mat-toolbar>
-<div #screen class="screen" [class.alternate-view]="alternateView" appWheel (wheelDelta)="wheelDelta($event)">
-  <div class="bio">
-    <div class="bio-line heading">Hey there!<br />I am Chirag Sane,</div>
-    <div class="filler"></div>
-    <div class="bio-line">UX Designer</div>
-    <div class="bio-line">Cloud Engineer</div>
-    <div class="bio-line">DevOps Professional</div>
-    <div class="bio-line">& a Full-stack Developer</div>
-    <div class="filler"></div>
-    <div class="bio-line">
-      This is my personal website.<br />I hope you like it...
-    </div>
-  </div>
-  <div class="pic-wrapper">
-    <div class="pic"></div>
-  </div>
-  <div class="highlight-wrapper"><div class="highlight"></div></div>
-  <div class="mention-wrapper">
-    <span #mentionIcon class="mention-icon"></span>
-    Made with {{ visibleMention.join("") }}
-  </div>
-  <div class="navigation-wrapper">
-    <button mat-mini-fab>
-      <mat-icon>{{alternateView ? 'chevron_left' : 'chevron_right'}}</mat-icon>
-    </button>
-  </div>
-</div>
+<app-loader *ngIf="isLoading"></app-loader>
+<app-toolbar *ngIf="!isLoading"></app-toolbar>
+<router-outlet *ngIf="!isLoading"></router-outlet>
