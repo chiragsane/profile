@@ -1,8 +1,8 @@
 <div class="gold-wrapper col" [class.main-view]="isMainView">
-  <div class="photo-wrapper">
+  <div *ngIf="areComponentsVisible" class="photo-wrapper">
     <div class="photo"></div>
   </div>
-  <div class="bio-wrapper">
+  <div *ngIf="areComponentsVisible" class="bio-wrapper">
     <div class="heading">Hello, my name is Chirag...</div>
     <div class="bio">
       I am a<br />

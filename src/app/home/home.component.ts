@@ -8,26 +8,33 @@ import { StateService } from './../state.service';
 })
 export class HomeComponent implements OnInit {
   isMainView = false;
+  areComponentsVisible = false;
   constructor(private state: StateService) {}
   ngOnInit() {
-    setTimeout(() => {
-      this.state.viewStateObservable.subscribe(view => {
-        switch (view) {
+    this.state.viewStateObservable.subscribe(view => {
+      switch (view) {
         case 'main':
-          this.isMainView = true;
+          this.setComponentsVisiblity(true);
           break;
         case 'full':
-          this.isMainView = false;
+          this.setComponentsVisiblity(false);
           break;
         case 'menu':
-          this.isMainView = false;
+          this.setComponentsVisiblity(false);
           break;
         case '':
           break;
         default:
           console.error(`No Such view: ${view}`);
-        }
-      });
-    }, 0);
+      }
+    });
+  }
+  setComponentsVisiblity(visiblity: boolean) {
+    setTimeout(() => {
+      this.isMainView = visiblity;
+    }, 200);
+    setTimeout(() => {
+      this.areComponentsVisible = visiblity;
+    }, visiblity ? 20 : 780);
   }
 }

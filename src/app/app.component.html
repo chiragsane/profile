@@ -9,12 +9,12 @@ class="home-wrapper col"
   <div class="dark-wrapper"></div>
   <div class="gold-wrapper-parent col">
     <router-outlet></router-outlet>
-    <div class="button-wrapper">
+    <div *ngIf="!isMenuView" class="button-wrapper">
       <app-mention *ngIf="isMainView"></app-mention>
       <button *ngIf="isFullView" mat-mini-fab color="primary" (click)="setView('main')">
         <mat-icon>chevron_left</mat-icon>
       </button>
-      <button mat-mini-fab color="primary" (click)="setView('full')">
+      <button *ngIf="isMainView" mat-mini-fab color="primary" (click)="setView('full')">
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
