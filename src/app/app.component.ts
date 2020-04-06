@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.isLoading = false;
-      this.router.navigate(['/home']);
+      // this.router.navigate(['/home']);
       setTimeout(() => {
         this.state.viewStateObservable.subscribe(view => {
           switch (view) {
