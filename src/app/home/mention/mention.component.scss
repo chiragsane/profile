@@ -1,4 +1,4 @@
-@import '../home.component';
+@import "src/theme";
 
 .mention-wrapper {
   height: 16px;
@@ -11,5 +11,15 @@
   mat-icon {
     margin-right: 4px;
     transition: opacity 0.2s ease-in-out;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-right: 1px solid transparent;
+  }
+  50% {
+    border-right: 1px solid $dark;
   }
 }

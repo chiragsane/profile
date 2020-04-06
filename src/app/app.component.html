@@ -1,2 +1,22 @@
 <app-loader *ngIf="isLoading"></app-loader>
-<router-outlet *ngIf="!isLoading"></router-outlet>
+
+<app-toolbar *ngIf="!isLoading" (toggle)="toggleMenu($event)"></app-toolbar>
+<div *ngIf="!isLoading"
+class="home-wrapper col"
+  [class.main-view]="isMainView && !isMenuView && !isFullView "
+  [class.full-view]="isFullView"
+  [class.menu-view]="isMenuView">
+  <div class="dark-wrapper"></div>
+  <div class="gold-wrapper-parent col">
+    <router-outlet></router-outlet>
+    <div class="button-wrapper">
+      <app-mention *ngIf="isMainView"></app-mention>
+      <button *ngIf="isFullView" mat-mini-fab color="primary" (click)="previousView()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" (click)="nextView()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

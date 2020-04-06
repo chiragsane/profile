@@ -1,1 +1,77 @@
+@import "src/mixins";
+@import "src/theme";
 
+$bio-wrapper-size: 280px;
+$photo-wrapper-size: 200px;
+$dark-area: calc(56px + 44px + (#{$photo-wrapper-size} / 2));
+$header-area: 56px;
+$menu-area: calc(100% - 80px);
+
+.home-wrapper {
+  @include flex-center;
+  height: calc(200% - #{$dark-area});
+  transition: all 0.8s ease-in-out;
+  .dark-wrapper {
+    @include flex-center;
+    @include background-linear("dark");
+    height: calc((100% + #{$dark-area}) / 2);
+    flex-shrink: 0;
+    transition: all 0.8s ease-in-out;
+  }
+  .gold-wrapper-parent {
+    @include flex-center;
+    justify-content: flex-start;
+    transition: all 0.8s ease-in-out;
+    position: relative;
+    @include background-linear("gold");
+    .button-wrapper {
+      position: absolute;
+      bottom: 20px;
+      width: calc(100% - 40px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.4s 0.4s ease-in-out;
+    }
+  }
+}
+
+.home-wrapper.main-view {
+  height: 100%;
+  .dark-wrapper {
+    height: $dark-area;
+  }
+  .gold-wrapper-parent {
+    height: calc(100% - #{$dark-area});
+  }
+}
+
+.home-wrapper.full-view {
+  height: 100%;
+  .dark-wrapper {
+    height: $header-area;
+  }
+  .gold-wrapper-parent {
+    height: calc(100% - #{$header-area});
+    .button-wrapper {
+      transition: all 0.4s ease-in-out;
+      button:not(:last-child) {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.home-wrapper.menu-view {
+  height: 100%;
+  .dark-wrapper {
+    height: $menu-area;
+  }
+  .gold-wrapper-parent {
+    height: calc(100% - #{$menu-area});
+    .button-wrapper {
+      transition: all 0.4s ease-in-out;
+      opacity: 0;
+    }
+  }
+}

@@ -7,22 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   isMainView = false;
-  isFullView = false;
-  isMenuView = false;
   ngOnInit() {
     setTimeout(() => {
       this.isMainView = true;
     }, 0);
   }
-  toggleMenu(isMenuView: boolean) {
-    this.isMenuView = isMenuView;
-  }
-  previousView() {
-    this.isMainView = true;
-    this.isFullView = false;
-  }
-  nextView() {
-    this.isMainView = false;
-    this.isFullView = true;
+  toggleMainView(isMainView: boolean) {
+    this.isMainView = isMainView;
   }
 }

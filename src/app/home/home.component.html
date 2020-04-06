@@ -1,38 +1,22 @@
-<app-toolbar (toggle)="toggleMenu($event)"></app-toolbar>
-<div class="home-wrapper col"
-  [class.main-view]="isMainView && !isMenuView && !isFullView "
-  [class.full-view]="isFullView"
-  [class.menu-view]="isMenuView">
-  <div class="dark-wrapper"></div>
-  <div class="gold-wrapper col">
-    <div class="photo-wrapper">
-      <div class="photo"></div>
+<div class="gold-wrapper col" [class.main-view]="isMainView">
+  <div class="photo-wrapper">
+    <div class="photo"></div>
+  </div>
+  <div class="bio-wrapper">
+    <div class="heading">Hello, my name is Chirag...</div>
+    <div class="bio">
+      I am a<br />
+      - Cloud Engineer<br />
+      - DevOps Practioner<br />
+      - Full Stack Developer<br />
+      - & also UI/UX Enthusiast<br />
     </div>
-    <div class="bio-wrapper">
-      <div class="heading">Hello, my name is Chirag...</div>
-      <div class="bio">
-        I am a<br />
-        - Cloud Engineer<br />
-        - DevOps Practioner<br />
-        - Full Stack Developer<br />
-        - & also UI/UX Enthusiast<br />
-      </div>
-      <div class="bio">
-        This is my personal website.<br />
-        Built in quarantine, from scratch.<br />
-      </div>
-      <div class="bio">
-        I would love to hear some feedback. Thanks..
-      </div>
+    <div class="bio">
+      This is my personal website.<br />
+      Built in quarantine, from scratch.<br />
     </div>
-    <div class="button-wrapper">
-      <app-mention *ngIf="isMainView"></app-mention>
-      <button *ngIf="isFullView" mat-mini-fab color="primary" (click)="previousView()">
-        <mat-icon>chevron_left</mat-icon>
-      </button>
-      <button mat-mini-fab color="primary" (click)="nextView()">
-        <mat-icon>chevron_right</mat-icon>
-      </button>
+    <div class="bio">
+      I would love to hear some feedback. Thanks..
     </div>
   </div>
 </div>
