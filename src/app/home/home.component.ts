@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from './../state.service';
 
 @Component({
   selector: 'app-home',
@@ -7,12 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   isMainView = false;
+  constructor(private state: StateService) {}
   ngOnInit() {
     setTimeout(() => {
-      this.isMainView = true;
+      this.state.viewStateObservable.subscribe(view => {
+        switch (view) {
+        case 'main':
+          this.isMainView = true;
+          break;
+        case 'full':
+          this.isMainView = false;
+          break;
+        case 'menu':
+          this.isMainView = false;
+          break;
+        case '':
+          break;
+        default:
+          console.error(`No Such view: ${view}`);
+        }
+      });
     }, 0);
-  }
-  toggleMainView(isMainView: boolean) {
-    this.isMainView = isMainView;
   }
 }

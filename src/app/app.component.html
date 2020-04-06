@@ -11,10 +11,10 @@ class="home-wrapper col"
     <router-outlet></router-outlet>
     <div class="button-wrapper">
       <app-mention *ngIf="isMainView"></app-mention>
-      <button *ngIf="isFullView" mat-mini-fab color="primary" (click)="previousView()">
+      <button *ngIf="isFullView" mat-mini-fab color="primary" (click)="setView('main')">
         <mat-icon>chevron_left</mat-icon>
       </button>
-      <button mat-mini-fab color="primary" (click)="nextView()">
+      <button mat-mini-fab color="primary" (click)="setView('full')">
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
